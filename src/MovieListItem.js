@@ -1,42 +1,19 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-class MovieListItem extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      movie: null
-    };
-  }
-
-  componentDidMount() {
-    axios.get(`http://localhost:3001/api/contacts/${this.props.params.id}`)
-      .then(resp => {
-        this.setState({
-          movie: resp.data
-        })
-      })
-      .catch(err => console.log(`Error! ${err}`));
-  }
-
-  renderProfile() {
-    return (
-      <div className="profile">
-        <div className="movie-info">
-          <h2>Name: {this.state.movie.title}</h2>
-        </div>
+const MovieListItem = (props) => {
+  return (
+    <li className="movie">
+      <div className="image-cropper">
+        <img src={props.poster} alt="poster"/>
       </div>
-    );
-  }
-
-  render() {
-    if (!this.state.movie) {
-      return <h2>Loading...</h2>
-    }
-
-    return this.renderProfile();
-  }
+      <div className="movie-info">
+        <h2>{props.title}</h2>
+        {props.rated}
+        {props.year}
+        {props.runtime}
+      </div>
+    </li>
+  );
 }
 
 export default MovieListItem;

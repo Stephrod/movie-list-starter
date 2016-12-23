@@ -7,43 +7,28 @@ class App extends Component {
   constructor() {
     super();
 
-      this.state = {
-        searchText: '',
-        movies: []
-      };
-    }
+    this.state = {
+      searchText: '',
+      contacts: []
+    };
+  }
 
-    componentDidMount() {
-      axios.get(`http://www.omdbapi.com/?t=${movie}&plot=short&r=json`)
-        .then(resp => {
-          this.setState({
-            searchText: this.state.searchText,
-            movies: resp.data
-          })
-        })
-        .catch(err => console.log(`Error! ${err}`));
-    }
+  handleSearchBarChange(event) {
+  this.setState({
+    movies: this.state.movies,
+    searchText: event.target.value
+  })
+}
 
-    handleSearchBarChange(event) {
-      this.setState({
-        movies: event.target.movies,
-        searchText: event.target.value
-      })
-    }
 
-    render() {
-      return (
-        <div className="App">
-        <SearchBar value={this.state.searchText} onChange{this.handleSearchBarChange.bind(this)}/>
-        <MovieList movies={this.getFilteredContacts()} />
-        </div>
-      );
-    }
-
-//     componentDidMount() {
-//       console.log('componentDidMount');
-//       debugger;
-//     }
-// }
+  render() {
+    return (
+      <div className="App">
+        <SearchBar value={this.state.searchText} onChange={this.handleSearchBarChange.bind(this)} />
+        <MovieList movies={this.state.movies}/>
+      </div>
+    );
+  }
+}
 
 export default App;

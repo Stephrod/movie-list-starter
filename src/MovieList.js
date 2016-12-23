@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import MovieList from './MovieList';
+import MovieListItem from './MovieListItem';
 
-class MovieList extends Component {
+const MovieList = (props) => {
   render() {
     return (
       <ul className="movie-list">
-        {this.props.movies.map(movie => {
+        {props.movies.map(movie => {
           return (
             <Movie
               key={movie._id}
-              title={movie.name}
+              title={movie.title}
               poster={movie.poster}
               rated={movie.rated}
             />
