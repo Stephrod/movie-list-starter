@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+import MovieList from './MovieList';
+import SearchBar from './SearchBar';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
     super();
 
       this.state = {
-        movies: [],
-        searchText: ''
+        searchText: '',
+        movies: []
       };
     }
 
     componentDidMount() {
-      axios.get('http://www.omdbapi.com/?')
+      axios.get(`http://www.omdbapi.com/?t=${movie}&plot=short&r=json`)
         .then(resp => {
           this.setState({
             searchText: this.state.searchText,
@@ -28,18 +31,6 @@ class App extends Component {
       })
     }
 
-    getFilteredContacts(){
-      const term = this.state.searchText.trim().toLowerCase();
-      const movies = this.state.movies;
-
-      if (!term) {
-        return movies;
-      }
-      return movies.filter(movie => {
-        return movie.name.toLowerCase().search(term) >= 0;
-      })
-    }
-
     render() {
       return (
         <div className="App">
@@ -49,10 +40,10 @@ class App extends Component {
       );
     }
 
-    componentDidMount() {
-      console.log('componentDidMount');
-      debugger;
-    }
-}
+//     componentDidMount() {
+//       console.log('componentDidMount');
+//       debugger;
+//     }
+// }
 
 export default App;
