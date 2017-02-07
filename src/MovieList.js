@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import MovieListItem from './MovieListItem';
 
-const MovieList = (props) => {
+const MovieList = props => {
   render() {
     return (
       <ul className="movie-list">
         {props.movies.map(movie => {
           return (
-            <Movie
+            <MovieList
               key={movie._id}
               title={movie.title}
               poster={movie.poster}
+              year={movie.year}
               rated={movie.rated}
+              plot={movie.plot}
             />
           )
         })}
@@ -19,5 +21,9 @@ const MovieList = (props) => {
     );
   }
 }
+
+MovieList.propTypes = {
+  movies: React.PropTypes.array.isRequired
+};
 
 export default MovieList;

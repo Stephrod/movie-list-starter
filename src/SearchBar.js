@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchBar = (props) => {
+const SearchBar = props => {
   return (
     <input
       className='search-bar'
@@ -12,7 +12,10 @@ const SearchBar = (props) => {
 };
 
 SearchBar.propTypes = {
+  // The value of the input element
   value: React.PropTypes.string.isRequired,
+  // The handler that is triggered when the value changes
+  // It passes the full SyntheticEvent as the first function argument
   onChange: React.PropTypes.func.isRequired
 };
 

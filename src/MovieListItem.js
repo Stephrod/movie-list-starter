@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieListItem = (props) => {
+const MovieListItem = props => {
   return (
     <li className="movie">
       <div className="image-cropper">
@@ -16,4 +16,11 @@ const MovieListItem = (props) => {
   );
 }
 
+MovieListItem.propTypes = {
+  poster: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+  rated: React.PropTypes.string.isRequired,
+  year: React.PropTypes.string.isRequired,
+  runtime: React.PropTypes.string.isRequired
+};
 export default MovieListItem;
